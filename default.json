@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate preset for herbertkokholm repos. Use with: \"extends\": [\"local>herbertkokholm/renovate-config\"]",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "timezone": "Europe/Copenhagen",
+  "schedule": ["* * 1-7 * *"],
+  "minimumReleaseAge": "3 days",
+  "prConcurrentLimit": 5,
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+  "packageRules": [
+    {
+      "description": "One monthly PR for all non-major updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
+      "groupName": "non-major"
+    },
+    {
+      "description": "Major updates wait for approval in the Dependency Dashboard",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "GitHub Actions grouped in their own PR",
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    },
+    {
+      "description": "Python runtime version in CI is chosen deliberately",
+      "matchDepNames": ["python"],
+      "matchUpdateTypes": ["major", "minor"],
+      "enabled": false
+    }
+  ]
+}
