@@ -1,0 +1,8 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Inherited by all herbertkokholm repos. New onboarding PRs propose the shared preset instead of Renovate's default config.",
+  "onboardingConfig": {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["local>herbertkokholm/renovate-config"]
+  }
+}
